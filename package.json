@@ -1,0 +1,30 @@
+{
+  "name": "language-xfst",
+  "version": "0.1.0",
+  "author": {
+    "name": "Janis Pagel"
+  },
+  "readmeFilename": "README.md",
+  "description": "A grammar and snippet package for the script language of xfst (Xerox Finite-State Tool)",
+  "keywords": [
+    "language",
+    "grammar",
+    "xfst",
+    "lexc"
+  ],
+  "repository": "https://github.com/pagelj/language-xfst",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

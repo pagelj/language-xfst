@@ -1,0 +1,26 @@
+# If you want some example snippets, check out:
+# https://github.com/atom/language-gfm/blob/master/snippets/gfm.cson
+
+'.source.xfst':
+  'read regex':
+    'prefix': 'read r'
+    'body': 'read regex < $1'
+  'define':
+    'prefix': 'def'
+    'body': 'define ${1:"NAME"} [ $2 ];$3'
+  'regex':
+    'prefix': 'reg'
+    'body': 'regex ${1:"NAME"} [ $2 ];$3'
+'.source.lexc':
+  'lexicon':
+    'prefix': 'LEX'
+    'body': 'LEXICON ${1:"Lexicon Name"}'
+  'multichar':
+    'prefix': 'Mult'
+    'body': 'Multichar_Symbols $1'
+  'regex':
+    'prefix': '<'
+    'body': '< $1 >'
+  'flag diacritic':
+    'prefix': '@'
+    'body': '@$1@'
