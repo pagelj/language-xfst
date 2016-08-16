@@ -4,7 +4,7 @@
 
 ## Installation
 
-Following, this is still a Alpha version.
+Follows, this is still a Alpha version.
 
 ## Issues
 

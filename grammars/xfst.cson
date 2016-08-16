@@ -9,14 +9,33 @@
   'regex'
   'vars'
 ]
+
 'patterns': [
+  {'include': '#comments'}
   {'include': '#regex'}
   {'include': '#keywords'}
   {'include': '#command_ending'}
-  {'include': '#string_curly'}
-  {'include': '#variable'}
+  {'include': '#strings'}
+  {'include': '#variables'}
 ]
+
 'repository':
+
+  'comments':
+      'comment': 'define comments'
+      'begin': '(?<!\\.)(#)(?!\\.)|(?<!\\.)(#)|(#)(?!\\.)'
+      'end': '\n'
+      'beginCapture':
+        '1':
+          'name': 'punctuation.definition.comment.xfst'
+      'name': 'comment.line.number-sign.xfst'
+
+  'strings':
+      'patterns': [
+        {'include': '#string_curly'}
+        {'include': '#string_char'}
+      ]
+
   'string_curly':
       'comment': 'define a string declaration in curly brackets'
       'begin': '(\\{)'
@@ -28,18 +47,26 @@
         '1':
           'name': 'punctuation.definition.string.xfst'
       'contentName': 'string.quoted.other.xfst'
-  'variable':
+
+    'string_char':
+      'comment': 'define a character'
+      'match': '\\s+([[A-Za-z]])\\s+'
+      'name': 'string.unquoted.xfst'
+
+  'variables':
       'comment': 'define variables after a *define*'
       'match': 'define\\s+([A-Za-z_][A-Za-z0-9_]*)'
       'name': 'variable.parameter.xfst'
+
   'keywords':
       'comment': 'Define the possible keywords'
-      'match': '(?:define|regex|read|union|print)'
+      'match': '(?:define|regex|read|print|union\\s+net|clear)'
       'name': 'keyword.other.xfst'
+
   'regex':
       'comment': 'define regex definitions'
-      'begin': '(\\[)'
-      'end': '(\\])'
+      'begin': '(\\[(?!\\.\\.\\]))'
+      'end': '(?<!\\[\\.\\.)(\\])'
       'beginCaptures':
         '1':
           'name': 'punctuation.definition.other.xfst'
@@ -48,8 +75,10 @@
           'name': 'punctuation.definition.other.xfst'
       'contentName': 'string.regexp.xfst'
       'patterns': [
-        {'include': '#string_curly'}
+        {'include': '#regex'}
+        {'include': '#strings'}
       ]
+
   'command_ending':
-      'match': '(;)\n'
+      'match': '(;)\\s*\n'
       'name': 'punctuation.definition.keyword.xfst'
