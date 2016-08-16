@@ -50,7 +50,7 @@
 
     'string_char':
       'comment': 'define a character'
-      'match': '\\s+([[A-Za-z]])\\s+'
+      'match': '(?<=\\s)([A-Za-z])(?=\\s)'
       'name': 'string.unquoted.xfst'
 
   'variables':
