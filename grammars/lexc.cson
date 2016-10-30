@@ -1,52 +1,74 @@
-'scopeName': 'source.text.lexc'
+'scopeName': 'text.lexc'
 'name': 'lexc'
 'fileTypes': [
   'lexc'
 ]
 'firstLineMatch': '(^\\s*Multichar_Symbols\\s+.*\\n|^\\s*LEXICON Root\\s*\\n)'
 'patterns': [
-  {
-    'match': '<.*?>'
-    'name': 'string.regexp.lexc'
-  }
-  {
-    'begin': '(?:^\\s*|.*?)((!).*)'
-    'end': '\\n'
-    'beginCaptures':
-      '1':
-        'name': 'comment.line.character.lexc'
-      '2':
-        'name': 'punctuation.definition.comment.lexc'
-  }
-  {
-    'match': '(?:^\\s*)(LEXICON)\\s*(.+?)(?=\\s*\\n)'
-    'captures':
-      '1':
-        'name': 'keyword.other.lexc'
-      '2':
-        'name': 'constant.character.lexc'
-  }
-  {
-    'match': '#'
-    'name': 'punctuation.definition.keyword.lexc'
-  }
-  {
-    'match': 'Multichar_Symbols'
-    'name': 'keyword.other.lexc'
-  }
-  {
-    'match': '@.*?@'
-    'name': 'string.quoted.other.lexc'
-  }
-  {
-    'match': 'Definitions'
-    'name': 'keyword.other.lexc'
-  }
-  {
-    'begin': '(\\[.*\\])'
-    'end': '\\s*;'
-    'beginCaptures':
-      '1':
-        'name': 'string.regexp.lexc'
-  }
+  {'include': '#comments'}
+  {'include': '#lexicon_definition'}
+  {'include': '#affixation_end'}
+  {'include': '#multichar_symbols'}
+  {'include': '#flag_diacritics'}
+  {'include': '#definitions_section'}
+  {'include': '#transducer_layers'}
+  {'include': '#regex'}
+  {'include': '#line_ending'}
 ]
+
+'repository':
+
+  'comments':
+      'begin': '(!)'
+      'end': '\n'
+      'beginCaptures':
+        '1':
+          'name': 'punctuation.definition.comment.lexc'
+      'name': 'comment.line.character.lexc'
+
+  'lexicon_definition':
+      'match': '(?:^\\s*)(LEXICON)\\s*(.+?)(?=\\s*\\n)'
+      'captures':
+        '1':
+          'name': 'keyword.other.lexc'
+        '2':
+          'name': 'constant.character.lexc'
+
+  'affixation_end':
+      'match': '#'
+      'name': 'punctuation.definition.keyword.lexc'
+
+  'multichar_symbols':
+      'match': 'Multichar_Symbols'
+      'name': 'keyword.other.lexc'
+
+  'definitions_section':
+        'match': 'Definitions'
+        'name': 'keyword.other.lexc'
+
+  'transducer_layers':
+        'match': ':'
+        'name': 'punctuation.definition.other.lexc'
+
+  'flag_diacritics':
+      'match': '@.*?@'
+      'name': 'string.quoted.other.lexc'
+
+  'regex':
+      'begin': '<'
+      'end': '>'
+      'beginCaptures':
+        '1':
+          'name': 'punctuation.definition.other.lexc'
+      'endCaptures':
+        '1':
+          'name': 'punctuation.definition.other.lexc'
+      'contentName': 'string.regexp.xfst'
+      'patterns': [
+        {'include': 'source.xfst#strings'}
+        {'include': '#regex'}
+      ]
+
+  'line_ending':
+      'match': '(;)'
+      'name': 'punctuation.definition.keyword.lexc'

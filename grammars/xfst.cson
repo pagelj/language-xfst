@@ -80,5 +80,5 @@
       ]
 
   'command_ending':
-      'match': '(;)\\s*\n'
+      'match': '(;)'
       'name': 'punctuation.definition.keyword.xfst'
