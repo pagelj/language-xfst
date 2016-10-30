@@ -4,6 +4,7 @@
 '.source.xfst':
   'editor':
     'commentStart': '#'
-'.source.lexc':
+'.text.lexc':
   'editor':
     'tabLength': 8
+    'commentStart': '!'

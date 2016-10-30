@@ -1,6 +1,6 @@
 {
   "name": "language-xfst",
-  "version": "0.3.1",
+  "version": "0.0.0",
   "author": {
     "name": "Janis Pagel"
   },
@@ -12,19 +12,16 @@
     "xfst",
     "lexc"
   ],
-  "repository": "https://github.com/pagelj/language-xfst",
-  "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": "*"
   },
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [],
-    "extensions": {
-      ".json": [
-        "package.json"
-      ]
-    },
-    "folders": []
-  }
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pagelj/language-xfst.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pagelj/language-xfst/issues"
+  },
+  "license": "MIT"
 }
